@@ -9,9 +9,325 @@
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Estilo -->
-    <link rel="stylesheet" href="style.css">
 </head>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #0f0f14;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    /* HEADER */
+    .header {
+        background: #111;
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 1px solid #222;
+    }
+
+    /* FILTERS */
+    .filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .filters input,
+    .filters select,
+    .filters button {
+        padding: 10px;
+        border-radius: 8px;
+        border: none;
+        background: #1c1c25;
+        color: #fff;
+    }
+
+    .filters button {
+        background: #7c6df0;
+        cursor: pointer;
+    }
+
+    /* GRID */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    /* CARD */
+    .card {
+        background: #1a1a22;
+        border-radius: 12px;
+        padding: 15px;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .card button {
+        margin-top: 10px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #7c6df0;
+        color: white;
+        cursor: pointer;
+    }
+
+    /* BADGE */
+    .badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+    .novo {
+        background: #1ecb8a;
+    }
+
+    .usado {
+        background: #f59e0b;
+    }
+
+    .recondicionado {
+        background: #60a5fa;
+    }
+
+    /* PRICE */
+    .price {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    /* PAGINAÇÃO */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .pagination button {
+        background: #1c1c25;
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .pagination button.active {
+        background: #7c6df0;
+    }
+
+    .pagination button:hover {
+        background: #333;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25D366;
+        border-radius: 50%;
+        padding: 12px;
+    }
+
+    .whatsapp img {
+        width: 28px;
+    }
+
+    /* MODAL */
+    .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .modal-content {
+        background: #1a1a22;
+        padding: 20px;
+        border-radius: 16px;
+        width: 90%;
+        max-width: 420px;
+    }
+
+    /* HEADER MODAL */
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #closeModal {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    /* CARROSSEL (VERSÃO FINAL LIMPA) */
+    .carousel {
+        display: grid;
+        grid-template-columns: 40px 1fr 40px;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    /* IMAGEM */
+    .image-wrapper {
+        width: 100%;
+        height: 300px;
+        background: #111;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    #carouselImage {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: opacity 0.3s ease;
+    }
+
+    /* SETAS */
+    .arrow {
+        width: 36px;
+        height: 36px;
+        background: #1c1c25;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .arrow span {
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid white;
+        border-right: 2px solid white;
+    }
+
+    .left span {
+        transform: rotate(-135deg);
+    }
+
+    .right span {
+        transform: rotate(45deg);
+    }
+
+    /* INDICADOR (BOLINHAS) */
+    .indicator {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .indicator span {
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .indicator span.active {
+        background: white;
+        transform: scale(1.2);
+    }
+
+    /* INFO */
+    .modal-info {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .modal-price {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 15px 0;
+    }
+
+    /* BOTÃO */
+    .btn-buy {
+        display: block;
+        background: #25D366;
+        padding: 12px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    /* FOOTER */
+    .footer {
+        background: #0c0c12;
+        margin-top: 40px;
+        border-top: 1px solid #222;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .footer p {
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        border-top: 1px solid #222;
+        padding: 15px;
+        margin-top: 20px;
+        font-size: 13px;
+        color: #777;
+    }
+</style>
 
 <body>
 
@@ -132,7 +448,261 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        let currentImages = [];
+        let currentIndex = 0;
+        let currentPage = 1;
+        const itemsPerPage = 20;
+        let filteredProducts = [];
+
+        const products = [];
+
+        const models = [
+            "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max",
+            "iPhone 12", "iPhone 12 Mini", "iPhone 12 Pro", "iPhone 12 Pro Max",
+            "iPhone 13", "iPhone 13 Mini", "iPhone 13 Pro", "iPhone 13 Pro Max",
+            "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max",
+            "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max",
+            "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max",
+            "iPhone 17", "iPhone 17 Air", "iPhone 17 Pro", "iPhone 17 Pro Max"
+        ];
+
+        const defaultImages = [
+            "https://horizonplay.fbitsstatic.net/img/p/apple-iphone-16-256gb-tela-super-retina-xdr-6-1-cor-preto-152184/338787-1.jpg?w=670&h=670&v=202503191324",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_683735-MLA91746736584_092025-F.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_2X_859441-MLA92147489379_092025-F.webp"
+        ];
+
+        /* GERAR PRODUTOS */
+        models.forEach((model) => {
+            for (let i = 0; i < 2; i++) {
+                const priceBase = 3000 + Math.random() * 7000;
+
+                products.push({
+                    brand: "Apple",
+                    model,
+                    price: Math.floor(priceBase),
+                    memory: ["64GB", "128GB", "256GB", "512GB"][Math.floor(Math.random() * 4)],
+                    battery: Math.floor(80 + Math.random() * 20),
+                    condition: ["novo", "usado", "recondicionado"][Math.floor(Math.random() * 3)],
+                    images: defaultImages,
+                    description: `${model} com excelente desempenho, design moderno e ótima bateria.`
+                });
+            }
+        });
+
+        const container = document.getElementById("products");
+
+        /* RENDER */
+        function render(list) {
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginated = list.slice(start, start + itemsPerPage);
+
+            container.innerHTML = "";
+
+            paginated.forEach((p) => {
+                const realIndex = products.indexOf(p);
+
+                container.innerHTML += `
+        <div class="card">
+            <img src="${p.images[0]}" onerror="this.src='https://via.placeholder.com/400x400'">
+            <h3>${p.brand} ${p.model}</h3>
+            <p>${p.memory} • 🔋${p.battery}%</p>
+            <span class="badge ${p.condition}">${p.condition}</span>
+            <div class="price">R$ ${p.price.toLocaleString("pt-BR")}</div>
+            <button onclick="openModal(${realIndex})">Ver detalhes</button>
+        </div>`;
+            });
+
+            renderPagination(list.length);
+        }
+
+        /* PAGINAÇÃO */
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const pagination = document.getElementById("pagination");
+
+            pagination.innerHTML = "";
+
+            if (currentPage > 1) {
+                pagination.innerHTML += `<button onclick="changePage(${currentPage - 1})">‹</button>`;
+            }
+
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.innerHTML += `
+        <button class="${i === currentPage ? "active" : ""}" onclick="changePage(${i})">
+            ${i}
+        </button>`;
+            }
+
+            if (currentPage < totalPages) {
+                pagination.innerHTML += `<button onclick="changePage(${currentPage + 1})">›</button>`;
+            }
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            render(filteredProducts);
+        }
+
+        /* FILTRO */
+        function filter() {
+            const search = document.getElementById("search").value.toLowerCase();
+            const brand = document.getElementById("brand").value;
+            const condition = document.getElementById("condition").value;
+
+            filteredProducts = products.filter(p =>
+                p.model.toLowerCase().includes(search) &&
+                (!brand || p.brand === brand) &&
+                (!condition || p.condition === condition)
+            );
+
+            currentPage = 1;
+            render(filteredProducts);
+        }
+
+        document.getElementById("search").oninput = filter;
+        document.getElementById("brand").onchange = filter;
+        document.getElementById("condition").onchange = filter;
+
+        document.getElementById("clearFilters").onclick = () => {
+            document.getElementById("search").value = "";
+            document.getElementById("brand").value = "";
+            document.getElementById("condition").value = "";
+
+            filteredProducts = products;
+            currentPage = 1;
+            render(filteredProducts);
+        };
+
+        /* MODAL */
+        const modal = document.getElementById("modal");
+
+        function openModal(index) {
+            const p = products[index];
+
+            document.getElementById("modalTitle").innerText = `${p.brand} ${p.model}`;
+            document.getElementById("modalDesc").innerText = p.description;
+            document.getElementById("modalMemory").innerText = `💾 ${p.memory}`;
+            document.getElementById("modalBattery").innerText = `🔋 ${p.battery}%`;
+            document.getElementById("modalPrice").innerText = `R$ ${p.price.toLocaleString("pt-BR")}`;
+
+            currentImages = p.images;
+            currentIndex = 0;
+
+            updateCarousel();
+
+            const message = `Olá, tenho interesse no ${p.model} - R$ ${p.price}`;
+            document.getElementById("modalWhatsapp").href =
+                `https://wa.me/5599999999999?text=${encodeURIComponent(message)}`;
+
+            modal.classList.remove("hidden");
+        }
+
+        /* CARROSSEL */
+        function updateCarousel() {
+            const img = document.getElementById("carouselImage");
+            const left = document.querySelector(".arrow.left");
+            const right = document.querySelector(".arrow.right");
+
+            if (!img || currentImages.length === 0) return;
+
+            // controle setas
+            if (currentImages.length <= 1) {
+                left.style.display = "none";
+                right.style.display = "none";
+            } else {
+                left.style.display = "flex";
+                right.style.display = "flex";
+            }
+
+            // reset zoom
+            img.style.transform = "scale(1)";
+            img.style.opacity = 0;
+
+            const newImg = new Image();
+            newImg.src = currentImages[currentIndex];
+
+            newImg.onload = () => {
+                img.src = newImg.src;
+                img.style.opacity = 1;
+            };
+
+            newImg.onerror = () => {
+                img.src = "https://via.placeholder.com/400x400";
+                img.style.opacity = 1;
+            };
+
+            updateIndicator();
+        }
+
+        /* INDICADOR */
+        function updateIndicator() {
+            const indicator = document.getElementById("indicator");
+            indicator.innerHTML = "";
+
+            currentImages.forEach((_, i) => {
+                const dot = document.createElement("span");
+
+                if (i === currentIndex) dot.classList.add("active");
+
+                dot.onclick = () => {
+                    currentIndex = i;
+                    updateCarousel();
+                };
+
+                indicator.appendChild(dot);
+            });
+        }
+
+        /* NAVEGAÇÃO */
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            updateCarousel();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            updateCarousel();
+        }
+
+        /* ZOOM */
+        function addZoom() {
+            const container = document.querySelector(".zoom-container");
+            const img = document.getElementById("carouselImage");
+
+            if (!container || !img) return;
+
+            container.onmousemove = (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+
+                img.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+                img.style.transform = "scale(1.8)";
+            };
+
+            container.onmouseleave = () => {
+                img.style.transform = "scale(1)";
+            };
+        }
+
+        /* FECHAR MODAL */
+        document.getElementById("closeModal").onclick = () => {
+            modal.classList.add("hidden");
+        };
+
+        window.onclick = (e) => {
+            if (e.target === modal) {
+                modal.classList.add("hidden");
+            }
+        };
+
+        /* INIT */
+        filteredProducts = products;
+        render(products);
+        addZoom();
+    </script>
 </body>
 
 </html>
