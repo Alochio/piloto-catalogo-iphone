@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartStore</title>
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Estilo -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <h1>SmartStore</h1>
+        </div>
+    </header>
+
+    <!-- FILTROS -->
+    <section class="filters container">
+        <input id="search" placeholder="Buscar modelo...">
+
+        <select id="brand">
+            <option value="">Todas marcas</option>
+            <option>Apple</option>
+            <option>Samsung</option>
+            <option>Xiaomi</option>
+            <option>Motorola</option>
+        </select>
+
+        <select id="condition">
+            <option value="">Todos estados</option>
+            <option value="novo">Novo</option>
+            <option value="usado">Usado</option>
+            <option value="recondicionado">Recondicionado</option>
+        </select>
+
+        <button id="clearFilters">Limpar filtros</button>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="container">
+
+        <div id="products" class="grid"></div>
+        <div id="pagination" class="pagination"></div>
+    </section>
+
+    <!-- BOTÃO WHATSAPP -->
+    <a href="https://wa.me/5599999999999" class="whatsapp" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+    </a>
+
+    <!-- MODAL -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+
+            <!-- HEADER -->
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button id="closeModal">✕</button>
+            </div>
+
+            <!-- CARROSSEL -->
+            <div class="carousel">
+
+                <button class="arrow left" onclick="prevImage()">
+                    <span></span>
+                </button>
+
+                <div class="image-wrapper">
+                    <div class="zoom-container">
+                        <img id="carouselImage">
+                    </div>
+                </div>
+
+                <button class="arrow right" onclick="nextImage()">
+                    <span></span>
+                </button>
+
+            </div>
+
+            <!-- INDICADOR -->
+            <div id="indicator" class="indicator"></div>
+
+            <!-- INFORMAÇÕES -->
+            <p id="modalDesc"></p>
+
+            <div class="modal-info">
+                <span id="modalMemory"></span>
+                <span id="modalBattery"></span>
+            </div>
+
+            <div id="modalPrice" class="modal-price"></div>
+
+            <a id="modalWhatsapp" class="btn-buy" target="_blank">
+                Tenho interesse
+            </a>
+
+        </div>
+    </div>
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="container footer-grid">
+
+            <div>
+                <h3>SmartStore</h3>
+                <p>Catálogo digital para lojas de celulares.</p>
+            </div>
+
+            <div>
+                <h4>Contato</h4>
+                <p>WhatsApp: (31) 99999-9999</p>
+                <p>Email: contato@smartstore.com</p>
+            </div>
+
+            <div>
+                <h4>Links</h4>
+                <p><a href="#">Início</a></p>
+                <p><a href="#">Produtos</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 SmartStore</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>
